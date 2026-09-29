@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 ### 1. 應力、應變與楊氏係數
 
-彈性體受一對大小相等、方向相反的力 $F$ 作用時會產生形變。應力（stress）定義為單位面積所受的力，應變（strain）定義為長度的相對變化量。在彈性限度內兩者成正比，這是廣義的虎克定律：
+彈性體受一對大小相等、方向相反的力 $F$ 作用時會產生形變。應力（stress）定義為單位面積所受的力，應變（strain）定義為長度的相對變化量。在彈性限度內兩者成正比：
 
 $$\frac{F}{A}=Y\cdot\frac{\Delta L}{L}\tag{1}$$
 
@@ -116,21 +116,25 @@ $$\frac{F}{A}=Y\cdot\frac{\Delta L}{L}\tag{1}$$
 | $\Delta L$ | 沿受力方向的長度變化量 | cm |
 | $Y$ | 楊氏係數，只與材料本身有關 | dyne/cm² |
 
-$1\ \text{dyne/cm}^2 = 0.1\ \text{Pa}$，因此 $10^{11}\ \text{dyne/cm}^2 = 10\ \text{GPa}$。
-
 ### 2. 受力橫樑的彎曲
 
-橫樑放在相距 $L$ 的兩刀口上，中央受鉛直力 $G$ 而向下彎曲。樑的上層受壓縮短，下層受拉伸長，中間有一層長度不變，稱為中性層。取距離支點 $x$（$x<L/2$）、長度 $\mathrm{d}x$ 的一小段：
+把橫樑架在相距 $L$ 的兩個刀口上，在中點施加鉛直力 $G$，橫樑就會往下彎。彎曲時樑的上半部被壓短、下半部被拉長，中間會有一層長度不變，叫做中性層。
 
-- 距中性層 $y$ 的薄層，應變為 $y/\rho$（$\rho$ 為該處曲率半徑）。由式 (1)，該層應力為 $Yy/\rho$。
-- 所有薄層的彈性力對中性層產生的內力矩為
+推導時，取距離支點 $x$（$x<L/2$）、長度 $\mathrm{d}x$ 的一小段來分析：
+
+(1) 這一小段中，距中性層 $y$ 的薄層應變為 $y/\rho$，其中 $\rho$ 是該處的曲率半徑。代入式 (1)，這層的應力為 $Yy/\rho$。
+
+(2) 把每一薄層的彈性力對中性層取力矩再加總，得到內力矩：
+
 $$\int_{-t/2}^{t/2} y\cdot\frac{Yy}{\rho}\,w\,\mathrm{d}y=\frac{Y}{\rho}\cdot\frac{wt^3}{12}=\frac{YI}{\rho},\qquad I\equiv\frac{wt^3}{12}$$
-- 內力矩必須與支點反力 $G/2$ 造成的外力矩 $Gx/2$ 平衡，所以這一小段的彎折角為 $\mathrm{d}\varphi=\mathrm{d}x/\rho = \dfrac{Gx}{2YI}\mathrm{d}x$。
-- 這段彎折使中點下降 $\mathrm{d}H = x\,\mathrm{d}\varphi$。從支點積分到中點，得
+
+(3) 內力矩要和支點反力 $G/2$ 產生的外力矩 $Gx/2$ 平衡，所以這一小段的彎折角為 $\mathrm{d}\varphi=\mathrm{d}x/\rho = \dfrac{Gx}{2YI}\mathrm{d}x$。
+
+(4) 這一小段的彎折會讓中點下降 $\mathrm{d}H = x\,\mathrm{d}\varphi$。從支點積分到中點：
 
 $$H=\int_0^{L/2}\frac{Gx^2}{2YI}\,\mathrm{d}x=\frac{GL^3}{48\,YI}=\frac14\left(\frac{L}{t}\right)^3\frac{1}{w}\cdot\frac{G}{Y}\tag{2}$$
 
-這與講義附錄以平板彈簧模型推得的結果相同，也與材料力學中簡支樑受中央集中力的撓度公式 $\delta = PL^3/48EI$ 一致。
+這個結果和講義附錄用平板彈簧模型推出來的相同，也和材料力學中簡支樑中央受集中力的撓度公式 $\delta = PL^3/48EI$ 一致。
 
 | 符號 | 意義 |
 |:---:|:---|
@@ -141,11 +145,13 @@ $$H=\int_0^{L/2}\frac{Gx^2}{2YI}\,\mathrm{d}x=\frac{GL^3}{48\,YI}=\frac14\left(\
 | $I$ | 截面二次矩（面積慣性矩），矩形截面 $I=wt^3/12$ |
 | $\rho,\ \varphi$ | 局部曲率半徑、彎折角 |
 
-由式 (2) 可知 $H\propto w^{-1}$、$H\propto t^{-3}$、$H\propto L^3$。厚度的影響是三次方，因為離中性層越遠的材料應變越大，力臂也越長，兩個因子相乘後再積分，就得到 $\int y^2\,\mathrm{d}y\propto t^3$。
+從式 (2) 可以看出 $H\propto w^{-1}$、$H\propto t^{-3}$、$H\propto L^3$。其中厚度的影響最大，是三次方。原因是離中性層越遠的材料應變越大，力臂也越長，兩者相乘再積分，就得到 $\int y^2\,\mathrm{d}y\propto t^3$。
 
 ### 3. 光槓桿的放大原理
 
-光槓桿是一面固定在三足架上的平面鏡。兩前足放在固定的支撐條上，後足放在待測棒的中點。棒中點下降 $H$ 時，鏡面後傾 $\theta$ 角。依反射定律，鏡面轉 $\theta$ 時法線也轉 $\theta$，入射角與反射角各改變 $\theta$，所以反射光轉 $2\theta$。因此在距離 $d$ 的米尺上，望遠鏡讀到的刻度移動 $h$：
+光槓桿是一面裝在三足架上的平面鏡。兩隻前足放在固定的支撐條上，後足放在待測棒的中點。當棒的中點下降 $H$，鏡面就會往後傾 $\theta$ 角。
+
+根據反射定律，鏡面轉 $\theta$ 時法線也跟著轉 $\theta$，入射角和反射角各改變 $\theta$，所以反射光一共轉了 $2\theta$。從望遠鏡看距離 $d$ 處的米尺，讀到的刻度會移動 $h$：
 
 $$\frac{H}{a}=\sin\theta\approx\theta,\qquad \frac{h}{d}=\tan2\theta\approx2\theta\quad\Longrightarrow\quad H=\frac{ah}{2d}\tag{3}$$
 
@@ -156,44 +162,54 @@ $$\frac{H}{a}=\sin\theta\approx\theta,\qquad \frac{h}{d}=\tan2\theta\approx2\the
 | $h$ | 望遠鏡中米尺刻度的移動量 |
 | $\theta$ | 鏡面轉角 |
 
-放大倍率為 $h/H = 2d/a$。本實驗 $d=150$ cm、$a=2.4$ cm，放大倍率為 125 倍。
+放大倍率為 $h/H = 2d/a$。本實驗 $d=150$ cm、$a=2.4$ cm，代入得放大倍率為 125 倍。
 
 ### 4. 楊氏係數的計算式與數據處理公式
 
-將式 (3) 代入式 (2)，並令 $G=Mg$：
+#### 4-1 基本公式
+
+把式 (3) 代入式 (2)，並令 $G=Mg$，得到：
 
 $$Y=\frac{MgL^3d}{2wt^3ah}\tag{4}$$
 
-實際計算時，$M$ 與 $h$ 一律取相對於無負荷狀態的差值（理由見實驗方法第 4 點）：
+#### 4-2 差值法
+
+實際計算時，$M$ 和 $h$ 都取相對於無負荷狀態的差值（理由見實驗方法第 4 點）。本報告用兩種方式取差值：
 
 $$\Delta h_i=\bar h_i-\bar h_0,\qquad Y_i=\frac{M_i\,gL^3d}{2wt^3a\,\Delta h_i}\qquad(\text{累積差，紀錄表})\tag{5}$$
 
 $$\Delta\bar h_{i+1}=\bar h_{i+1}-\bar h_i,\qquad Y_i'=\frac{\Delta M\,gL^3d}{2wt^3a\,\Delta\bar h_{i+1}},\ \ \Delta M=200\ \text{g}\qquad(\text{相鄰差，步驟 6})\tag{6}$$
 
-由式 (4) 可知 $\Delta h$ 與 $M$ 成正比。將所有數據以最小平方法擬合為 $\Delta h_i = kM_i+b$，即可由斜率 $k$ 求出：
+#### 4-3 線性迴歸
+
+由式 (4)，$\Delta h$ 應與 $M$ 成正比。把所有數據用最小平方法擬合成 $\Delta h_i = kM_i+b$，再由斜率 $k$ 求出：
 
 $$Y=\frac{gL^3d}{2wt^3a\,k}\tag{7}$$
 
-第三部分固定 $M$，只改變 $w$ 或 $t$。將 $\Delta h=\alpha x^{\beta}$ 取對數，得 $\ln\Delta h=\ln\alpha+\beta\ln x$，雙對數圖的斜率就是 $\beta$。理論預測為
+#### 4-4 雙對數圖（第三部分）
+
+第三部分固定 $M$，只改變 $w$ 或 $t$。把 $\Delta h=\alpha x^{\beta}$ 取對數，得到 $\ln\Delta h=\ln\alpha+\beta\ln x$，所以雙對數圖的斜率就是 $\beta$。理論預測為：
 
 $$\beta_w=-1,\qquad \beta_t=-3\tag{8}$$
 
-由式 (7)，各量的誤差傳遞到 $Y$ 的相對不確定度為
+#### 4-5 誤差傳遞
+
+由式 (7)，各量的誤差傳遞到 $Y$ 的相對不確定度為：
 
 $$\left(\frac{\delta Y}{Y}\right)^2=\left(3\frac{\delta L}{L}\right)^2+\left(\frac{\delta d}{d}\right)^2+\left(\frac{\delta w}{w}\right)^2+\left(3\frac{\delta t}{t}\right)^2+\left(\frac{\delta a}{a}\right)^2+\left(\frac{\delta k}{k}\right)^2\tag{9}$$
 
 ### 5. 理論模型的假設條件
 
-講義附錄最後問到還有哪些假設條件，整理如下：
+上面的推導用到以下假設：
 
 1. 小形變：$H\ll L$，且 $\sin\theta\approx\theta$、$\tan2\theta\approx2\theta$。本實驗 $H_{\max}\approx0.18$ cm，只有 $L$ 的 0.5%。
-2. 線彈性：負載在彈性限度內，應力與應變成正比，卸載後可完全恢復。
-3. 材料均勻且等向：拉伸與壓縮的 $Y$ 相同，因此中性層恰好位於幾何中心。
-4. 截面均勻：$w$、$t$ 沿棒長不變，截面是理想矩形。
-5. 平截面假設（Euler-Bernoulli）：截面彎曲後仍保持平面，並垂直於中性層；同時忽略剪切形變（$L/t\approx115$，剪切修正約 $10^{-4}$ 量級）。
-6. 理想簡支：刀口不產生摩擦力矩，也不會下陷；力 $G$ 恰作用於中點，光槓桿後足也恰在中點。
-7. 忽略棒的自重與初始彎曲，這一項可以用差值法消去。
-8. 忽略蒲松效應造成的橫向反向彎曲，也就是寬度方向上的曲面效應。
+2. 線彈性：負載在彈性限度內，應力和應變成正比，卸載後能完全恢復。
+3. 材料均勻且等向：拉伸和壓縮的 $Y$ 相同，所以中性層剛好在幾何中心。
+4. 截面均勻：$w$、$t$ 沿棒長不變，截面是理想的矩形。
+5. 平截面假設（Euler-Bernoulli）：截面彎曲後仍是平面，且垂直於中性層。另外忽略剪切形變（$L/t\approx115$，剪切修正約 $10^{-4}$ 量級）。
+6. 理想簡支：刀口沒有摩擦力矩，也不會下陷；力 $G$ 剛好作用在中點，光槓桿後足也剛好在中點。
+7. 忽略棒的自重與初始彎曲，這兩項可以用差值法消去。
+8. 忽略蒲松效應造成的橫向反向彎曲（寬度方向上的曲面效應）。
 
 ## 實驗方法
 
@@ -203,7 +219,7 @@ $$\left(\frac{\delta Y}{Y}\right)^2=\left(3\frac{\delta L}{L}\right)^2+\left(\fr
 4. 使用差值 $\Delta h$、$\Delta M$ 計算。米尺零點、勾盤重量、棒的自重與初始彎曲都會在相減時消去，剩下的只有每增加一份重量棒子多彎多少。
 5. 多點負載加上線性迴歸。用 6 個負載點的斜率求 $Y$，可以利用全部數據、平均掉隨機誤差，並以截距 $b$ 吸收系統性的零點偏移；$R^2$ 則直接檢驗虎克定律。
 6. 控制變因。第三部分固定材料、$M$、$L$、$a$、$d$，只改變 $w$ 或 $t$，以雙對數圖驗證式 (2) 的尺度律。
-7. 兩種材料用相同裝置與幾何量測量。$a$、$d$、$L$ 等共用的系統誤差會在 $Y_{\text{鋼}}/Y_{\text{銅}}$ 的比值中相消，可以用來診斷誤差來源（見討論）。
+7. 兩種材料用相同裝置與幾何量測量。$a$、$d$、$L$ 等共用的系統誤差會在 $Y_{\text{鋼}}/Y_{\text{銅}}$ 的比值中相消，可以用來診斷誤差來源。
 
 ## 數據分析
 
@@ -237,9 +253,7 @@ $$\left(\frac{\delta Y}{Y}\right)^2=\left(3\frac{\delta L}{L}\right)^2+\left(\fr
 
 楊氏係數平均值 $\bar Y_{\text{銅}}=(1.028\pm0.009)\times10^{12}\ \text{dyne/cm}^2$。誤差取 5 點的標準差 $0.09\times10^{11}$，只代表讀數的隨機散布，儀器誤差見第七節。
 
-計算範例（$i=1$）：
-
-$$Y_1=\frac{200\times980\times34.6^3\times150}{2\times2.05\times0.30^3\times2.4\times4.40}=\frac{1.218\times10^{12}}{1.169}=1.042\times10^{12}\ \text{dyne/cm}^2$$
+> 標準差計算算式
 
 趨勢線（圖 1）為 $\Delta h=(0.02250\pm0.00011)\,M-(0.067\pm0.066)$，$R^2=0.99991$。代入式 (7)：
 
@@ -490,7 +504,7 @@ $Y$ 是材料常數，理論上不應隨 $w$、$t$ 改變。第三部分各棒�
 
 ## 參考資料
 
-1. 普通物理實驗講義，〈實驗三　楊氏係數測定〉，pp. 3-1～3-6（含附錄：式 (2) 之推導、附表：固體之楊氏係數）。
+1. 普通物理實驗講義，〈實驗三　楊氏係數測定〉
 2. D. Halliday, R. Resnick, J. Walker, *Fundamentals of Physics*, 10th ed. (John Wiley & Sons, Hoboken, NJ, 2014), Ch. 12 "Equilibrium and Elasticity" (pp. 327-342), Sec. 12-3 "Elasticity"（含 Table 12-1）.
 3. J. M. Gere, B. J. Goodno, *Mechanics of Materials*, 8th ed. (Cengage Learning, Stamford, CT, 2013), Ch. 5 "Stresses in Beams (Basic Topics)"; Ch. 9 "Deflections of Beams".
 4. W. D. Callister, Jr., D. G. Rethwisch, *Materials Science and Engineering: An Introduction*, 8th ed. (John Wiley & Sons, Hoboken, NJ, 2010), Ch. 6 "Mechanical Properties of Metals", Sec. 6.3, Table 6.1.
