@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <div class="cover-authors">
     組員：<br>
     <br>
-    <br>
+    4115064201 洪秉寬<br>
     4115064213 胡庭睿<br>
   </div>
 </div>  
