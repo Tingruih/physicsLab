@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
   <div class="cover-authors">
     組員：<br>
-    <br>
+    4115064204 林致齊<br>
     4115064201 洪秉寬<br>
     4115064213 胡庭睿<br>
   </div>
@@ -313,3 +313,4 @@ https://openstax.org/books/university-physics-volume-1/pages/10-5-calculating-mo
 |:---:|:---:|:---|
 | 洪秉寬 | 4115064201 | |
 | 胡庭睿 | 4115064213 | |
+| 林致齊 | 4115064204 | |
