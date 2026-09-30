@@ -239,7 +239,7 @@ $$y=0.02331892\,x+0.01254259,\qquad R^2_{\mathrm{fit}}=0.972045,\qquad T_{\mathr
 
 $$I_2=0.0045874966\times\frac{48.7457667^2-37.70^2}{42.879175^2-37.70^2}=0.0104961964\ \mathrm{kg\,m^2}$$
 
-$$I_{2,\mathrm{th}}=M_2\left(\frac{b^2+c^2}{4}+\frac{a^2}{12}\right)=0.0105848492\ \mathrm{kg\,m^2}$$
+$$I_{2,\mathrm{th}}=M_2\left(\frac{b^2+c^2}{4}+\frac{a^2}{12}\right)=3.160\left(\frac{0.0939^2+0.066^2}{4}+\frac{0.026^2}{12}\right)=0.01058485\ \mathrm{kg,m^2}$$
 
 兩圓柱的實驗值使用相同週期平方差公式。
 而理論值代入 $I_3=m_Ar_A^2+2m_AL^2$，例如 $L=0.137\ \mathrm{m}$ 時，$I_{3,\mathrm{th}}=0.830\times0.025146^2+2\times0.830\times0.137^2=0.03168137\ \mathrm{kg\cdot m^2}$。
